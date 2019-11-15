@@ -8,7 +8,14 @@ const routes = [
   // E:\Vue86-87\87\87everyday\02daypro\topline87\src\
   // index.vue文件是默认索引文件，不用设置，自动寻找
   { path: '/login', name: 'login', component: () => import('@/views/login') },
-  { path: '/home', name: 'home', component: () => import('@/views/home') }
+  { path: '/home',
+    name: 'home',
+    component: () => import('@/views/home'),
+    redirect: '/welcome', // 路由重定向
+    children: [
+      { path: '/welcome', name: 'welcome', component: () => import('@/views/welcome') }
+    ]
+  }
 ]
 
 const router = new VueRouter({
